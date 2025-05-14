@@ -1,10 +1,10 @@
-import { Divider, Image, Typography } from 'antd';
+import { Image, Typography } from 'antd';
 
 interface ICommodityProps {
-  img?: string;
   title?: string;
   price?: string;
   hasSoldCount?: number;
+  cover?: string;
 }
 
 export const Commodity = (props: ICommodityProps) => {
@@ -13,18 +13,14 @@ export const Commodity = (props: ICommodityProps) => {
       style={{
         boxSizing: 'border-box',
         backgroundColor: '#fff',
-        borderRadius: '4px',
+        borderRadius: '6px',
         width: '160px',
-        padding: '8px',
+        padding: '10px',
         display: 'flex',
         flexDirection: 'column',
       }}
     >
-      <Image
-        width={'100%'}
-        height={140}
-        src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-      />
+      <Image width={'100%'} preview={false} height={140} src={props.cover} />
       <Typography.Title
         level={5}
         style={{ fontSize: '15px', lineHeight: '32px', marginBottom: '0px' }}
@@ -34,7 +30,7 @@ export const Commodity = (props: ICommodityProps) => {
       <div
         style={{
           display: 'flex',
-          marginTop: '24px',
+          marginTop: '12px',
           alignItems: 'center',
           justifyContent: 'space-between',
         }}

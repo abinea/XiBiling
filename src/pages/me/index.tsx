@@ -2,13 +2,19 @@ import { Avatar, Typography } from 'antd';
 import { EditOutlined, UserOutlined } from '@ant-design/icons';
 import { FuncButton } from '../../components/funcBtn';
 import { MenuList } from './menuList';
+import { useNavigate } from 'react-router-dom';
+import Tizhi from '../../assets/home/tizhi.png';
+import Fengxian from '../../assets/home/fengxian.png';
+import Doctor from '../../assets/home/doctor.png';
 
 export const MePage = () => {
+  const navigate = useNavigate();
+
   return (
     <div style={{ padding: '16px 16px 16px 36px' }}>
       {/* header */}
       <div style={{ textAlign: 'right', marginBottom: '12px' }}>
-        <EditOutlined />
+        <EditOutlined style={{ fontSize: 18 }} />
       </div>
       <div
         style={{
@@ -67,16 +73,27 @@ export const MePage = () => {
         }}
       >
         <FuncButton
-          icon={'U'}
+          icon={Tizhi}
           text="体质辨识"
           onClick={() => {
-            // 跳转到 体质辨识 页面
-            window.location.href = '/identify';
+            navigate('/identify');
           }}
         />
-        <FuncButton icon={'U'} text="风险筛查" />
-        <FuncButton icon={'U'} text="寻医无忧" />
-        <FuncButton icon={'U'} text="寻医无忧" />
+        <FuncButton
+          icon={Fengxian}
+          text="风险筛查"
+          onClick={() => {
+            navigate('/risk');
+          }}
+        />
+        <FuncButton
+          icon={Doctor}
+          text="寻医无忧"
+          onClick={() => {
+            navigate('/find-doctor');
+          }}
+        />
+        <div></div>
       </div>
 
       <div

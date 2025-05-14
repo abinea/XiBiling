@@ -20,7 +20,13 @@ const tags = [
   },
 ];
 
-export const TopBar = () => {
+interface ITopBarProps {
+  activeTagKey: number;
+  setActiveTagKey: (key: number) => void;
+}
+
+export const TopBar = (props: ITopBarProps) => {
+  const { activeTagKey, setActiveTagKey } = props;
   return (
     <div style={{ position: 'relative' }}>
       {tags.map((tag) => {
@@ -31,9 +37,12 @@ export const TopBar = () => {
               border: 0,
               backgroundColor: '#f1f1f1',
               padding: '3px 10px',
-              color: '#666',
+              color: activeTagKey == +tag.key ? 'rgb(126, 169, 244)' : '#666',
             }}
             key={tag.key}
+            onClick={() => {
+              setActiveTagKey(+tag.key);
+            }}
           >
             {tag.label}
           </Tag>

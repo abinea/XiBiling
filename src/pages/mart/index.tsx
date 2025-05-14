@@ -1,6 +1,7 @@
-import { Avatar, Input, Select, Typography } from 'antd';
+import { Input, Select, Typography } from 'antd';
 import {
   ArrowLeftOutlined,
+  MessageFilled,
   SearchOutlined,
   ShareAltOutlined,
 } from '@ant-design/icons';
@@ -9,34 +10,45 @@ import { Container } from '../../components/base/container';
 import { Commodity } from './commodity';
 import { useNavigate } from 'react-router-dom';
 import './index.css';
+import Zaojiaoci from '../../assets/mart/zhaojiaoci.png';
+import Xibiji from '../../assets/mart/xibiiji.png';
+import Guocha from '../../assets/mart/guohca.png';
+import Chongxiqi from '../../assets/mart/chongxiqi.png';
 
 const commodityList = [
   {
     title: '皂角刺中药洗鼻剂',
     price: '23.8',
     hasSoldCount: 281,
+    cover: Zaojiaoci,
   },
   {
     title: '生理盐水洗鼻剂',
     price: '14.8',
+    cover: Xibiji,
     hasSoldCount: 146,
   },
   {
     title: '玉竹罗汉果茶',
     price: '69.9',
+    cover: Guocha,
     hasSoldCount: 45,
+  },
+  {
+    title: '洗鼻器更换喷头',
+    price: '19.9',
+    cover: Chongxiqi,
+    hasSoldCount: 245,
   },
 ];
 
 export const MartPage = () => {
   const navigate = useNavigate();
-  const [activeKey, setActiveKey] = useState(0);
-  const getFontSize = (key: number, self: number) => {
-    if (key === self) {
-      return 16;
-    } else {
-      return 14;
-    }
+
+  const [inputVal, setInputVal] = useState('');
+  const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value;
+    setInputVal(val.trim());
   };
 
   return (
@@ -66,15 +78,12 @@ export const MartPage = () => {
           }}
         >
           <Typography.Title level={5}>鼻康灵</Typography.Title>
-          <Avatar
-            style={{
-              backgroundColor: 'rgb(126, 169, 244)',
-              color: '#fff',
-              boxShadow: '0 0 0 2px #f0f0f0',
+          <MessageFilled
+            style={{ fontSize: '22px', color: 'rgb(127, 160, 250)' }}
+            onClick={() => {
+              navigate('/find-doctor');
             }}
-          >
-            U
-          </Avatar>
+          />
         </div>
         <div
           style={{
@@ -114,6 +123,8 @@ export const MartPage = () => {
               width: 16,
             },
           }}
+          value={inputVal}
+          onChange={onInputChange}
           placeholder={'搜索疾病或药品'}
         />
         <Select
@@ -137,18 +148,21 @@ export const MartPage = () => {
           gridTemplateColumns: 'repeat(2, 1fr)',
           // 空隙在空间
           columnGap: '14px',
-          rowGap: '12px',
+          rowGap: '8px',
         }}
       >
         {commodityList.map((item, index) => {
-          return (
-            <Commodity
-              key={index}
-              title={item.title}
-              price={item.price}
-              hasSoldCount={item.hasSoldCount}
-            />
-          );
+          if (item.title.includes(inputVal) || !inputVal) {
+            return (
+              <Commodity
+                key={index}
+                title={item.title}
+                cover={item.cover}
+                price={item.price}
+                hasSoldCount={item.hasSoldCount}
+              />
+            );
+          }
         })}
       </div>
     </Container>

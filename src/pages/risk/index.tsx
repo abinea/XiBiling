@@ -45,7 +45,7 @@ export const RiskPage = () => {
         >
           <ArrowLeftOutlined
             onClick={() => {
-              navigate('/');
+              navigate(-1);
             }}
           />
           <span>风险筛查</span>

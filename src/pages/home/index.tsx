@@ -1,12 +1,22 @@
-import { Avatar, Image, Input, Tabs, Typography } from 'antd';
+import { Image, Input, Tabs, Typography } from 'antd';
 import './index.css';
-import { SearchOutlined } from '@ant-design/icons';
+import { MessageFilled, SearchOutlined } from '@ant-design/icons';
 import { FuncButton } from '../../components/funcBtn';
 import { Description } from '../../components/description';
 import { useState } from 'react';
-import { Particle } from '../../components/particle';
 import { Container } from '../../components/base/container';
 import { useNavigate } from 'react-router-dom';
+import { ShortParticle } from '../../components/shortPaticle';
+import CoverImg from '../../assets/home/top-cover.png';
+import Tizhi from '../../assets/home/tizhi.png';
+import Fengxian from '../../assets/home/fengxian.png';
+import Doctor from '../../assets/home/doctor.png';
+import BuyMedical from '../../assets/home/buy-medical.png';
+import Wenzhen from '../../assets/home/wenzhen.png';
+import Wash from '../../assets/home/wash.png';
+import WashTool from '../../assets/home/wash-tool.png';
+import Bihoukepu from '../../assets/home/bihoukepu.png';
+import Mart from '../../assets/home/mart.png';
 
 export const HomePage = () => {
   const [activeKey, setActiveKey] = useState(0);
@@ -35,9 +45,9 @@ export const HomePage = () => {
         </Typography.Title>
       ),
       children: (
-        <Particle
+        <ShortParticle
           title={`"治鼻要药"五道食疗`}
-          description="祛风寒、通鼻窍、治鼻炎的香草————白芷"
+          description="祛风寒、通鼻窍、治鼻炎的香草———白芷"
         />
       ),
     },
@@ -56,9 +66,9 @@ export const HomePage = () => {
         </Typography.Title>
       ),
       children: (
-        <Particle
+        <ShortParticle
           title={`"治鼻要药"五道食疗`}
-          description="祛风寒、通鼻窍、治鼻炎的香草————白芷"
+          description="祛风寒、通鼻窍、治鼻炎的香草———白芷"
         />
       ),
     },
@@ -77,9 +87,9 @@ export const HomePage = () => {
         </Typography.Title>
       ),
       children: (
-        <Particle
+        <ShortParticle
           title={`"治鼻要药"五道食疗`}
-          description="祛风寒、通鼻窍、治鼻炎的香草————白芷"
+          description="祛风寒、通鼻窍、治鼻炎的香草———白芷"
         />
       ),
     },
@@ -98,9 +108,9 @@ export const HomePage = () => {
         </Typography.Title>
       ),
       children: (
-        <Particle
+        <ShortParticle
           title={`"治鼻要药"五道食疗`}
-          description="祛风寒、通鼻窍、治鼻炎的香草————白芷"
+          description="祛风寒、通鼻窍、治鼻炎的香草———白芷"
         />
       ),
     },
@@ -117,15 +127,12 @@ export const HomePage = () => {
           >
             鼻康灵
           </Typography.Title>
-          <Avatar
-            style={{
-              backgroundColor: 'rgb(126, 169, 244)',
-              color: '#fff',
-              boxShadow: '0 0 0 2px #f0f0f0',
+          <MessageFilled
+            style={{ fontSize: '22px', color: 'rgb(127, 160, 250)' }}
+            onClick={() => {
+              navigate('/find-doctor');
             }}
-          >
-            U
-          </Avatar>
+          />
         </div>
         <Input
           className="home-header-search"
@@ -143,28 +150,29 @@ export const HomePage = () => {
           placeholder={'搜索疾病或药品'}
         />
         <Image
+          preview={false}
           className="home-header-img"
           width={'100%'}
           height={100}
-          src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+          src={CoverImg}
         />
         <div className="home-header-funcs-block">
           <FuncButton
-            icon={'U'}
+            icon={Tizhi}
             text="体质辨识"
             onClick={() => {
               navigate('/identify');
             }}
           />
           <FuncButton
-            icon={'U'}
+            icon={Fengxian}
             text="风险筛查"
             onClick={() => {
               navigate('/risk');
             }}
           />
           <FuncButton
-            icon={'U'}
+            icon={Doctor}
             text="寻医无忧"
             onClick={() => {
               navigate('/find-doctor');
@@ -172,15 +180,48 @@ export const HomePage = () => {
           />
         </div>
         <div className="home-header-funcs-uni">
-          <Description icon={'U'} title="快速购药" description="同城极速送达" />
-          <Description icon={'U'} title="咨询问诊" description="医生在线解答" />
+          <Description
+            icon={BuyMedical}
+            title="快速购药"
+            description="同城极速送达"
+            size="lg"
+          />
+          <Description
+            icon={Wenzhen}
+            title="咨询问诊"
+            description="医生在线解答"
+            size="lg"
+          />
         </div>
         <Typography.Title level={5}>热门服务</Typography.Title>
         <div className="home-header-funcs-uni">
-          <Description icon={'U'} title="快速购药" description="同城极速送达" />
-          <Description icon={'U'} title="咨询问诊" description="医生在线解答" />
-          <Description icon={'U'} title="快速购药" description="同城极速送达" />
-          <Description icon={'U'} title="咨询问诊" description="医生在线解答" />
+          <Description
+            icon={Wash}
+            title="智能洗鼻助理"
+            description="私人医生回电"
+            hl={true}
+          />
+          <Description
+            icon={WashTool}
+            title="洗鼻器保养教程"
+            description="专家跨度回复"
+            hl={true}
+          />
+          <Description
+            icon={Bihoukepu}
+            title="耳鼻喉健康科普"
+            description="专业医生诊断"
+            hl={true}
+          />
+          <Description
+            icon={Mart}
+            title="健康商城"
+            description="要求快速到达"
+            hl={true}
+            onClick={() => {
+              navigate('/mart');
+            }}
+          />
         </div>
         <Tabs
           activeKey={activeKey.toString()}

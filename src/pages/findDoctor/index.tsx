@@ -89,7 +89,7 @@ export const FindDoctorPage = () => {
           >
             <LeftOutlined
               onClick={() => {
-                navigate('/');
+                navigate(-1);
               }}
             />
             <span
@@ -98,7 +98,15 @@ export const FindDoctorPage = () => {
                 alignItems: 'center',
               }}
             >
-              <Avatar>D</Avatar>
+              <Avatar
+                style={{
+                  border: '1px solid rgba(0,0,0,0.1)',
+                  background: '#fff',
+                  color: '#1890ff',
+                }}
+              >
+                医
+              </Avatar>
               <div
                 style={{
                   display: 'flex',
@@ -127,7 +135,7 @@ export const FindDoctorPage = () => {
           </Typography.Text>
         </div>
         {messages.map((msg, idx) => (
-          <ChatMessage key={idx} {...msg} man="D" />
+          <ChatMessage key={idx} {...msg} man="医" />
         ))}
         <div ref={contentRef} style={{ width: '100%', height: '69px' }}></div>
       </Container>

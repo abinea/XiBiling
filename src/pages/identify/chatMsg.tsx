@@ -7,7 +7,7 @@ interface IChatMessage {
 }
 
 export const ChatMessage = (props: IChatMessage) => {
-  const { msg, self = false, man = 'R' } = props;
+  const { msg, self = false, man = '医' } = props;
   return (
     <div
       style={{
@@ -18,7 +18,14 @@ export const ChatMessage = (props: IChatMessage) => {
         justifyContent: self ? 'end' : 'start',
       }}
     >
-      <Avatar>{self ? '我' : man}</Avatar>
+      <Avatar
+        style={{
+          background: self ? '#1890ff' : '#fff',
+          color: self ? '#fff' : '#1890ff',
+        }}
+      >
+        {self ? '我' : man}
+      </Avatar>
       <div
         style={{
           marginLeft: self ? 0 : '12px',

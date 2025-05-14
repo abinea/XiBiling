@@ -14,24 +14,24 @@ const choices = [
   { label: '总是', value: 4 },
 ];
 
-const messages = [
-  {
-    msg: '皂角刺中药洗鼻剂',
-    self: false,
-  },
-  {
-    msg: '皂角刺中药洗鼻剂',
-    self: true,
-  },
-  {
-    msg: '皂角刺中药洗鼻剂',
-    self: false,
-  },
-  {
-    msg: '皂角刺中药洗鼻剂',
-    self: false,
-  },
-];
+// const messages = [
+//   {
+//     msg: '皂角刺中药洗鼻剂',
+//     self: false,
+//   },
+//   {
+//     msg: '皂角刺中药洗鼻剂',
+//     self: true,
+//   },
+//   {
+//     msg: '皂角刺中药洗鼻剂',
+//     self: false,
+//   },
+//   {
+//     msg: '皂角刺中药洗鼻剂',
+//     self: false,
+//   },
+// ];
 
 const questionList = [
   '您平时痰多，特别是咽喉部总感到有痰堵着吗？',
@@ -43,7 +43,7 @@ let timer: any = null;
 export const IdentifyPage = () => {
   const navigate = useNavigate();
   const [showBottom, setShowBottom] = useState(false);
-  const [messages, setMessages] = useState([
+  const [messages, setMessages] = useState<{ msg: string; self: boolean }[]>([
     // { msg: '皂角刺中药洗鼻剂', self: false },
     // { msg: '皂角刺中药洗鼻剂', self: false },
     // { msg: '皂角刺中药洗鼻剂', self: false },
@@ -54,7 +54,7 @@ export const IdentifyPage = () => {
   const [questionIdx, setQuestionIdx] = useState(0);
   const [questionFade, setQuestionFade] = useState(true);
   const [questionFinished, setQuestionFinished] = useState(false);
-  const msgListRef = useRef(null);
+  const msgListRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (timer) clearTimeout(timer);
@@ -67,7 +67,7 @@ export const IdentifyPage = () => {
   }, []);
 
   // 追加消息并切换问题
-  const handleChoiceClick = (choice) => {
+  const handleChoiceClick = (choice: any) => {
     setMessages((prev) => [
       ...prev,
       // 记录下问题
@@ -113,7 +113,11 @@ export const IdentifyPage = () => {
             height: '32px',
           }}
         >
-          <ArrowLeftOutlined />
+          <ArrowLeftOutlined
+            onClick={() => {
+              navigate(-1);
+            }}
+          />
           <span style={{ marginRight: '12px' }}>AI体质检测系统</span>
           <div></div>
         </div>

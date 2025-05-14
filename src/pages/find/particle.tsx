@@ -33,6 +33,7 @@ export const Particle = (props: ParticleProps) => {
       </div>
       <div style={{ width: '40%', height: '98%' }}>
         <Image
+          preview={false}
           style={{
             borderRadius: '4px',
           }}

@@ -1,7 +1,7 @@
-import { Avatar } from 'antd';
+import { Image } from 'antd';
 
 interface DescriptionProps extends React.PropsWithChildren {
-  icon?: string;
+  icon?: any;
   backgroundColor?: string;
   text?: string;
   onClick?: () => void;
@@ -19,17 +19,16 @@ export const FuncButton = (props: DescriptionProps) => {
       }}
       onClick={props.onClick}
     >
-      <Avatar
+      <Image
+        preview={false}
+        width={52}
+        height={48}
+        src={props.icon}
         style={{
-          backgroundColor: 'rgb(126, 169, 244)',
-          color: '#fff',
-          boxShadow: '0 0 0 2px #f0f0f0',
-          marginBottom: '10px',
+          objectFit: 'cover',
         }}
-      >
-        {props.icon}
-      </Avatar>
-      <span style={{ fontSize: '14px' }}>{props.text}</span>
+      />
+      <span style={{ fontSize: '14px', marginTop: '2px' }}>{props.text}</span>
     </div>
   );
 };

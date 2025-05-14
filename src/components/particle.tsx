@@ -7,6 +7,7 @@ interface ParticleProps extends React.PropsWithChildren {
   description?: string;
   tag?: string;
   hasReadCount?: number;
+  cover?: string;
 }
 
 export const Particle = (props: ParticleProps) => {
@@ -34,18 +35,26 @@ export const Particle = (props: ParticleProps) => {
       >
         {props.description}
       </div>
-      <div style={{ width: '100%', height: '110px', marginBottom: '10px' }}>
+      <div style={{ width: '100%', height: '160px', marginBottom: '10px' }}>
         <Image
           style={{
             borderRadius: '4px',
           }}
+          preview={false}
           width={'100%'}
           height={'100%'}
-          src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+          src={props.cover}
         />
       </div>
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Typography.Link style={{ fontSize: 12, marginTop: '10px' }}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          marginTop: '10px',
+        }}
+      >
+        <Typography.Link style={{ fontSize: 12 }}>
           {props.tag ? '#' + props.tag : ''}
         </Typography.Link>
         <div style={{ display: 'flex', alignItems: 'center' }}>

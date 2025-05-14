@@ -5,25 +5,27 @@ import {
   UserOutlined,
 } from '@ant-design/icons';
 import { NavBarBtn } from '../navBtn';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 export const NavBar = () => {
-  const [pageIdx, setPageIdx] = useState(() => {
-    const pathname = window.location.pathname;
+  const location = useLocation();
+  const [pageIdx, setPageIdx] = useState(0);
+
+  useEffect(() => {
+    const pathname = location.pathname;
     if (pathname === '/') {
-      return 0;
+      setPageIdx(0);
+    } else if (pathname === '/find') {
+      setPageIdx(1);
+    } else if (pathname === '/mart') {
+      setPageIdx(2);
+    } else if (pathname === '/me') {
+      setPageIdx(3);
+    } else {
+      setPageIdx(0);
     }
-    if (pathname === '/find') {
-      return 1;
-    }
-    if (pathname === '/mart') {
-      return 2;
-    }
-    if (pathname === '/me') {
-      return 3;
-    }
-    return 0;
-  });
+  }, [location.pathname]);
   const onClick = (key: number) => {
     setPageIdx(key);
   };

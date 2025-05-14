@@ -14,7 +14,7 @@ interface MenuItemProps {
   onClick: () => void;
 }
 
-const MenuItem = ({ icon, text, onClick }: MenuItemProps) => {
+const MenuItem = ({ icon, text }: MenuItemProps) => {
   return (
     <div
       style={{
